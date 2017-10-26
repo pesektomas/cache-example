@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<ruleset name="SlevomatEET">
+    <rule ref="./vendor/consistence/coding-standard/Consistence/ruleset.xml"/>
+    <rule ref="./vendor/slevomat/coding-standard/SlevomatCodingStandard/ruleset.xml">
+        <exclude name="SlevomatCodingStandard.Namespaces.UseOnlyWhitelistedNamespaces"/>
+        <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedClassNameAfterKeyword"/>
+        <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedExceptions"/>
+    </rule>
+    <rule ref="SlevomatCodingStandard.Namespaces.UnusedUses">
+        <properties>
+            <property name="searchAnnotations" value="false"/>
+        </properties>
+    </rule>
+    <rule ref="SlevomatCodingStandard.Files.TypeNameMatchesFileName">
+        <properties>
+            <property name="rootNamespaces" type="array" value="src/App=>App,tests/App=>App"/>
+        </properties>
+    </rule>
+    <rule ref="SlevomatCodingStandard.Namespaces.ReferenceUsedNamesOnly">
+        <properties>
+            <property name="namespacesRequiredToUse" type="array" value="App" />
+        </properties>
+    </rule>
+    <rule ref="SlevomatCodingStandard.Namespaces.UseOnlyWhitelistedNamespaces">
+        <properties>
+            <property name="allowUseFromRootNamespace" value="false" />
+            <property name="namespacesRequiredToUse" type="array" value="App" />
+        </properties>
+    </rule>
+    <rule ref="SlevomatCodingStandard.TypeHints.DeclareStrictTypes">
+        <properties>
+            <property name="newlinesCountBetweenOpenTagAndDeclare" value="0"/>
+        </properties>
+    </rule>
+    <rule ref="SlevomatCodingStandard.TypeHints.TypeHintDeclaration">
+        <properties>
+            <property name="enableNullableTypeHints" value="false"/>
+            <property name="enableVoidTypeHint" value="false"/>
+            <property name="usefulAnnotations" type="array" value="
+				@dataProvider,
+				@runInSeparateProcess,
+			"/>
+        </properties>
+        <exclude-pattern>tests/SlevomatEET/Cryptography/OpenSslFunctionsMock.php</exclude-pattern>
+    </rule>
+    <rule ref="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingTraversableReturnTypeHintSpecification">
+        <exclude-pattern>tests/</exclude-pattern><!-- it's useless to add "@return mixed[]" to all data providers -->
+    </rule>
+    <rule ref="Squiz.Commenting.FunctionComment">
+        <exclude-pattern>tests/</exclude-pattern><!-- @dataProvider etc. annotations trigger comments check -->
+    </rule>
+    <rule ref="Squiz.Functions.GlobalFunction.Found">
+        <exclude-pattern>tests/SlevomatEET/Cryptography/OpenSslFunctionsMock.php</exclude-pattern>
+    </rule>
+    <rule ref="Consistence.NamingConventions.ValidVariableName.NotCamelCaps">
+        <exclude-pattern>tests/SlevomatEET/Cryptography/OpenSslFunctionsMock.php</exclude-pattern>
+    </rule>
+    <rule ref="PSR1.Methods.CamelCapsMethodName.NotCamelCaps">
+        <exclude-pattern>src/SoapClient.php</exclude-pattern>
+    </rule>
+    <rule ref="SlevomatCodingStandard.Namespaces.UnusedUses">
+        <properties>
+            <property name="searchAnnotations" type="boolean" value="true"/>
+        </properties>
+    </rule>
+</ruleset>
