@@ -1,0 +1,7 @@
+.idea/*
+cache-example/var/cache/*
+!cache-example/var/cache/.gitkeep
+cache-example/var/log/*
+!cache-example/var/log/.gitkeep
+cache-example/vendor/*
+cache-example/composer.lock
