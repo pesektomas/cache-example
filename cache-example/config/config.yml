@@ -1,0 +1,18 @@
+parameters:
+    secret: 32fbc57ad06af5c151e08e3b9f3d80ad7ac497ef
+    cacheProvider: 'symfony'
+    cacheType: 'FilesystemCache'
+    preferDS: 'MySQL'
+
+framework:
+    secret: '%secret%'
+    test: ~
+
+services:
+
+    cache:
+        class: App\Service\Cache
+        arguments: [%cacheType%, %cacheProvider%]
+
+    fakeDataSource:
+        class: App\Drivers\FakeDataSource
