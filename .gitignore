@@ -5,3 +5,4 @@ cache-example/var/log/*
 !cache-example/var/log/.gitkeep
 cache-example/vendor/*
 cache-example/composer.lock
+cache-example/build/log/*
